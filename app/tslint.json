@@ -14,7 +14,8 @@
         "semicolon": [
             true,
             "never"
-        ]
+        ],
+        "radix": false
     },
     "rulesDirectory": []
 }
