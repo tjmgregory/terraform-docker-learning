@@ -18,7 +18,7 @@ app.get("/", async (_req, res) => {
             return
         }
 
-        res.send("The sedulous hyena ate the antelope!")
+        res.status(200).send(`The first user is ${users.rows[0].name}`)
     } catch (err) {
         console.error('Error when fetching users.', err)
         res.status(500).send(`Error when fetching users. ${err.message}`)
