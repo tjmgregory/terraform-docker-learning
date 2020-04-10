@@ -13,6 +13,6 @@
     },
     "scripts": {
         "start": "tsc && node dist/app.js",
-        "test": "source .env && tsc && node dist/app.js"
+        "test": "source .test_env && tsc && node dist/app.js"
     }
 }
