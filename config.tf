@@ -1,9 +1,13 @@
+variable "app_port" {
+    type = number
+}
+
 provider "docker" {
   version = "2.7"
 }
 
-resource "docker_network" "app-network" {
-  name = "app-network"
+resource "docker_network" "app_network" {
+  name = "app_network"
 }
 
 resource "docker_container" "web" {
@@ -11,11 +15,11 @@ resource "docker_container" "web" {
   image   = "tjmgregory/docker-node-test:1.0"
   restart = "always"
   ports {
-    internal = "80"
-    external = "8080"
+    internal = "1000"
+    external = var.app_port
   }
   networks_advanced {
-    name = "app-network"
+    name = "app_network"
   }
 }
 
@@ -25,7 +29,7 @@ resource "docker_container" "postgres" {
   restart = "always"
   env     = ["POSTGRES_PASSWORD=password"]
   networks_advanced {
-    name = "app-network"
+    name = "app_network"
   }
   volumes {
     host_path      = "/Users/theo/learning/postgres_data"
